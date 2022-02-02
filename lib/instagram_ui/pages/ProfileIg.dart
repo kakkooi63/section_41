@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'BottomNavigationbar.dart';
+import 'Galeri.dart';
 import 'ItemPost.dart';
 import 'ProfilePict.dart';
+import 'Story_Item.dart';
+import 'Tabitem.dart';
 
 class ProfileIg extends StatelessWidget {
   const ProfileIg({Key? key}) : super(key: key);
@@ -115,43 +119,34 @@ class ProfileIg extends StatelessWidget {
           ),
           SizedBox(height: 15),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Container(
-                        width: 90,
-                        height: 90,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Colors.red, Colors.amber]),
-                          borderRadius: BorderRadius.circular(45),
-                        ),
-                      ),
-                      Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(40),
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 5,
-                            ),
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://loremflickr.com/520/360"),
-                              fit: BoxFit.cover,
-                            )),
-                      ),
-                    ],
-                  )
+                  Story_Item("Story 1"),
+                  Story_Item("Story 2"),
+                  Story_Item("Story 3"),
+                  Story_Item("Story 4"),
+                  Story_Item("Story 5"),
                 ],
-              )),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Tabitem(true, Icons.grid_on_outlined),
+              Tabitem(false, Icons.person_pin_rounded),
+            ],
+          ),
+          Galeri()
         ],
       ),
+      bottomNavigationBar: BottomNavigationbar(),
     );
   }
 }
