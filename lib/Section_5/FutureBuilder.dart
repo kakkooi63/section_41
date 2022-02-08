@@ -15,7 +15,8 @@ class _vuturState extends State<vutur> {
 
   Future getalluser() async {
     try {
-      var response = await myhttp.get(Uri.parse("https://reqres.in/api/users"));
+      var response =
+          await myhttp.get(Uri.parse("https://reqres.in/api/users?page=3"));
       List data = (json.decode(response.body) as Map<String, dynamic>)["data"];
       data.forEach((element) {
         alluser.add(element);
@@ -41,8 +42,13 @@ class _vuturState extends State<vutur> {
                   child: Text("Loading...."),
                 );
               } else {
+                if (alluser.length == 0) {
+                  return Center(
+                    child: Text("Tidak ada data"),
+                  );
+                }
                 return ListView.builder(
-                  itemCount: 5,
+                  itemCount: alluser.length,
                   itemBuilder: (context, index) => ListTile(
                     leading: CircleAvatar(
                       backgroundImage: NetworkImage(alluser[index]['avatar']),
