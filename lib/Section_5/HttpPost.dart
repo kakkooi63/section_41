@@ -4,10 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as myhttp;
 
-void main() {
-  runApp(HttpPost());
-}
-
 class HttpPost extends StatefulWidget {
   HttpPost({Key? key}) : super(key: key);
 
@@ -56,7 +52,7 @@ class _HttpPostState extends State<HttpPost> {
           ),
           ElevatedButton(
             onPressed: () async {
-              var response = await myhttp.post(
+              var response = await myhttp.put(
                   Uri.parse("https://reqres.in/api/users"),
                   body: {"name ": nama.text, "job": job.text});
 
