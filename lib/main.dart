@@ -1,5 +1,7 @@
 // import 'dart:ffi';
 
+import 'package:coba/Section_5/FutureBuilder.dart';
+import 'package:coba/Section_5/HttpDelete.dart';
 import 'package:coba/Section_5/HttpGet.dart';
 import 'package:coba/Section_5/HttpPut.dart';
 import 'package:coba/instagram_ui/pages/ProfileIg.dart';
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HttpPut(),
+      home: vutur(),
     );
   }
 }
