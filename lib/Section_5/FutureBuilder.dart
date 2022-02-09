@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:coba/Section_5/models/UserModel.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as myhttp;
 
@@ -11,15 +12,21 @@ class vutur extends StatefulWidget {
 }
 
 class _vuturState extends State<vutur> {
-  List<Map<String, dynamic>> alluser = [];
+  List<UserModel> alluser = [];
 
   Future getalluser() async {
     try {
       var response =
-          await myhttp.get(Uri.parse("https://reqres.in/api/users?page=3"));
+          await myhttp.get(Uri.parse("https://reqres.in/api/users?page=2"));
       List data = (json.decode(response.body) as Map<String, dynamic>)["data"];
       data.forEach((element) {
-        alluser.add(element);
+        alluser.add(
+          UserModel(
+            avatar: element['avatar'],
+            email: element['email'],
+            name: "${element['first_name']}  ${element['last_name']}",
+          ),
+        );
       });
       print(alluser);
     } catch (e) {
@@ -51,12 +58,11 @@ class _vuturState extends State<vutur> {
                   itemCount: alluser.length,
                   itemBuilder: (context, index) => ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: NetworkImage(alluser[index]['avatar']),
+                      backgroundImage: NetworkImage(alluser[index].avatar),
                       backgroundColor: Colors.grey[300],
                     ),
-                    title: Text(
-                        "${alluser[index]['first_name']} ${alluser[index]['last_name']}"),
-                    subtitle: Text("${alluser[index]['email']}"),
+                    title: Text("${alluser[index].name}"),
+                    subtitle: Text("${alluser[index].email}"),
                   ),
                 );
               }
