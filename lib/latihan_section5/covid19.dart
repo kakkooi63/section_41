@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:coba/latihan/Models/Summary.dart';
+import './Models/Summary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
