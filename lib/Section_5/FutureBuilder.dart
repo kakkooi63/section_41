@@ -12,7 +12,7 @@ class vutur extends StatefulWidget {
 }
 
 class _vuturState extends State<vutur> {
-  List<UserModel> alluser = [];
+  List<Usermodel> alluser = [];
 
   Future getalluser() async {
     try {
@@ -21,11 +21,7 @@ class _vuturState extends State<vutur> {
       List data = (json.decode(response.body) as Map<String, dynamic>)["data"];
       data.forEach((element) {
         alluser.add(
-          UserModel(
-            avatar: element['avatar'],
-            email: element['email'],
-            name: "${element['first_name']}  ${element['last_name']}",
-          ),
+          Usermodel.fromJson(element),
         );
       });
       print(alluser);
@@ -61,7 +57,8 @@ class _vuturState extends State<vutur> {
                       backgroundImage: NetworkImage(alluser[index].avatar),
                       backgroundColor: Colors.grey[300],
                     ),
-                    title: Text("${alluser[index].name}"),
+                    title: Text("${alluser[index].firstName}"
+                        "${alluser[index].lastName}"),
                     subtitle: Text("${alluser[index].email}"),
                   ),
                 );
