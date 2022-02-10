@@ -5,7 +5,7 @@ import 'package:coba/Section_5/HttpDelete.dart';
 import 'package:coba/Section_5/HttpGet.dart';
 import 'package:coba/Section_5/HttpPut.dart';
 import 'package:coba/instagram_ui/pages/ProfileIg.dart';
-import 'package:coba/latihan/covid19.dart';
+import 'package:coba/latihan_section5/covid19.dart';
 import 'package:coba/section_4/Navigation.dart';
 import 'package:flutter/material.dart';
 import './section_4/BottomNavigation.dart';
